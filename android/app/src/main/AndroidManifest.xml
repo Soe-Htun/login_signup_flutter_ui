@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.logon_signup_test">
    <application
-        android:label="logon_signup_test"
+        android:label="FLutter Login UI"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

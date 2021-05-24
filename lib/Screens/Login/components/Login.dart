@@ -45,7 +45,7 @@ class _LoginState extends State<Login> {
             Container(
                 width: double.infinity,
                 padding: EdgeInsets.only(left: 60, right: 60),
-                height: size.height * 0.04,
+                height: size.height * 0.055,
                 child: Email()),
             SizedBox(
               height: size.height * 0.02,
@@ -55,7 +55,7 @@ class _LoginState extends State<Login> {
             Container(
                 width: double.infinity,
                 padding: EdgeInsets.only(left: 60, right: 60),
-                height: size.height * 0.04,
+                height: size.height * 0.055,
                 child: Password()),
             SizedBox(
               height: size.height * 0.03,
@@ -65,7 +65,7 @@ class _LoginState extends State<Login> {
             Container(
               width: double.infinity,
               padding: EdgeInsets.only(left: 60, right: 60),
-              height: size.height * 0.04,
+              height: size.height * 0.055,
               child: ElevatedButton(
                   style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(kPrimaryColor),

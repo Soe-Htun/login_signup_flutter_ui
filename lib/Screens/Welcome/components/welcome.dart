@@ -2,13 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:logon_signup_test/Screens/Login/login_screens.dart';
 import 'package:logon_signup_test/Screens/SignUp/signup_screens.dart';
+import 'package:logon_signup_test/Screens/Welcome/components/background.dart';
 import 'package:logon_signup_test/constants.dart';
 
 class Welcome extends StatelessWidget {
+  const Welcome({Key key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Container(
+
+    return Background(
       child: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -31,7 +34,7 @@ class Welcome extends StatelessWidget {
             Container(
               padding: EdgeInsets.only(left: 60, right: 60),
               width: double.infinity,
-              height: size.height * 0.04,
+              height: size.height * 0.055,
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen() ));
@@ -57,7 +60,7 @@ class Welcome extends StatelessWidget {
             Container(
               padding: EdgeInsets.only(left: 60, right: 60),
               width: double.infinity,
-              height: size.height * 0.04,
+              height: size.height * 0.055,
               child: TextButton(
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpScreens()));

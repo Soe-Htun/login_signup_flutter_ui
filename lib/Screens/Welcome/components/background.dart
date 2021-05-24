@@ -1,15 +1,16 @@
 
 import 'package:flutter/material.dart';
-import 'package:logon_signup_test/Screens/Welcome/components/welcome.dart';
 
 class Background extends StatelessWidget {
-  const Background({Key key, SingleChildScrollView child}) : super(key: key);
+  final Widget child;
+  const Background({Key key, @required this.child,}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Container(
       width: double.infinity,
-      height: size.height ,
+      height: size.height,
       child: Stack(
         alignment: Alignment.center,
         children: <Widget> [
@@ -17,7 +18,7 @@ class Background extends StatelessWidget {
             top: 0,
             left:0,
             child: Image.asset("assets/images/main_top.png",
-              width: size.width * 0.35, 
+              width: size.width * 0.3, 
             ),
           ),
 
@@ -28,9 +29,7 @@ class Background extends StatelessWidget {
               width: size.width * 0.2,
             ),
           ),
-          Center(
-            child: Welcome(),
-          )
+          child,
 
         ],
       ),

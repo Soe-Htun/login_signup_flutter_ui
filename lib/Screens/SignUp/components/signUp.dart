@@ -39,7 +39,7 @@ class _SignUpState extends State<SignUp> {
             //Email
             Container(
               width: double.infinity,
-              height: size.height * 0.04,
+              height: size.height * 0.055,
               padding: EdgeInsets.only(left: 60, right: 60),
               child: Email()
             ),
@@ -50,7 +50,7 @@ class _SignUpState extends State<SignUp> {
 
             Container(
               width: double.infinity,
-              height: size.height * 0.04,
+              height: size.height * 0.055,
               padding: EdgeInsets.only(left: 60, right: 60),
               child: Password()
             ),
@@ -60,7 +60,7 @@ class _SignUpState extends State<SignUp> {
             // SignUp Button
             Container(
               width: double.infinity,
-              height: size.height * 0.04,
+              height: size.height * 0.055,
               padding: EdgeInsets.only(left: 60, right: 60),
               child: ElevatedButton(onPressed: (){},
                 style: ButtonStyle(
