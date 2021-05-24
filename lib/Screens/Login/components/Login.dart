@@ -5,9 +5,15 @@ import 'package:logon_signup_test/Screens/SignUp/signup_screens.dart';
 import 'package:logon_signup_test/components/already_have_an_account.dart';
 import 'package:logon_signup_test/constants.dart';
 
-class Login extends StatelessWidget {
+class Login extends StatefulWidget {
  const Login({Key key, }) : super(key: key);
 
+  @override
+  _LoginState createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+   bool _isHidden = true;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -20,7 +26,7 @@ class Login extends StatelessWidget {
               "LOGIN",
               style: TextStyle(
                   color: Colors.black,
-                  fontSize: 18,
+                  fontSize: 22,
                   fontWeight: FontWeight.bold,
                   decoration: TextDecoration.none),
             ),
@@ -88,7 +94,6 @@ class Login extends StatelessWidget {
     );
   }
 
-  // ignore: non_constant_identifier_names
   Widget Email() {
     return Container(
       decoration: BoxDecoration(
@@ -120,7 +125,7 @@ class Login extends StatelessWidget {
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(18), color: kPrimaryLightColor),
       child: TextFormField(
-        obscureText: true,
+        obscureText: _isHidden,
         // keyboardType: TextInputType.visiblePassword,
         decoration: InputDecoration(
             prefixIcon: Icon(
@@ -130,19 +135,26 @@ class Login extends StatelessWidget {
             hintText: "Your Password",
             // fillColor: kPrimaryLightColor,
             // filled: true,
-            suffixIcon: Icon(
-              Icons.visibility,
-              color: kPrimaryColor,
+            suffixIcon: InkWell(
+              child: Icon(
+                _isHidden? Icons.visibility : Icons.visibility_off,
+                color: kPrimaryColor,
+              ),
+              onTap: tooglePasswordView,
             ),
             border: InputBorder.none
             // border: OutlineInputBorder(
             //   borderRadius: BorderRadius.circular(18),
             // )
             ),
-        onChanged: (String value) {
-          // _email = value;
-        },
+       
       ),
     );
+  }
+
+  void tooglePasswordView(){
+    setState(() {
+    _isHidden = !_isHidden;
+    });
   }
 }

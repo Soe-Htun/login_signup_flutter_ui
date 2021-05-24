@@ -4,8 +4,15 @@ import 'package:logon_signup_test/Screens/Login/login_screens.dart';
 import 'package:logon_signup_test/Screens/SignUp/components/background.dart';
 import 'package:logon_signup_test/components/already_have_an_account.dart';
 import 'package:logon_signup_test/constants.dart';
-class SignUp extends StatelessWidget {
+class SignUp extends StatefulWidget {
   const SignUp({ Key key}): super(key: key);
+
+  @override
+  _SignUpState createState() => _SignUpState();
+}
+
+class _SignUpState extends State<SignUp> {
+  bool _isHidden = true;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -14,9 +21,10 @@ class SignUp extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget> [
-            Text("SIGNUP",
+            Text("SIGN UP",
               style: TextStyle(
-                fontWeight: FontWeight.bold
+                fontWeight: FontWeight.bold,
+                fontSize: 22
               ),
             ),
 
@@ -87,6 +95,7 @@ class SignUp extends StatelessWidget {
       ),
     );
   }
+
   Widget Email(){
     return Container(
       decoration: BoxDecoration(
@@ -114,7 +123,7 @@ class SignUp extends StatelessWidget {
         color: kPrimaryLightColor
       ),
       child: TextFormField(
-        obscureText: true,
+        obscureText: _isHidden,
         decoration: InputDecoration(
           border: InputBorder.none,
           hintText: "Password",
@@ -122,13 +131,22 @@ class SignUp extends StatelessWidget {
             Icons.lock,
             color: kPrimaryColor,
           ),
-          suffixIcon: Icon(
-            Icons.visibility,
-            color: kPrimaryColor,
+          suffixIcon: InkWell(
+            child: Icon(
+             _isHidden ? Icons.visibility : Icons.visibility_off,
+              color: kPrimaryColor,
+            ),
+            onTap: tooglePasswordView,
           )
         ),
-        onChanged: (String value){},
+        
       ),
     );
+  }
+
+  void tooglePasswordView(){
+    setState(() {
+      _isHidden = !_isHidden;
+    });
   }
 }
