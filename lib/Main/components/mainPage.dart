@@ -92,7 +92,7 @@ class _MainPageState extends State<MainPage> {
               //sure dialog
               showDialog(context: context,
                 builder: (_) => AlertDialog(
-                  title: Center(child: Text("Material Dialog")),
+                  title: Center(child: Text("Logout")),
                   content: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget> [

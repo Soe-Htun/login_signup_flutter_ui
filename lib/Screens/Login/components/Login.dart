@@ -8,6 +8,10 @@ import 'package:logon_signup_test/components/already_have_an_account.dart';
 import 'package:logon_signup_test/constants.dart';
 import 'package:firebase_core/firebase_core.dart';
 
+import '../../../constants.dart';
+import '../../../constants.dart';
+import '../../../constants.dart';
+
 class Login extends StatefulWidget {
   const Login({
     Key key,
@@ -19,6 +23,7 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   bool _isHidden = true;
+  bool processing = false;
 
   //  String _email;
   //  String _password;
@@ -95,10 +100,10 @@ class _LoginState extends State<Login> {
                                   RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(18),
                                       side: BorderSide(color: kPrimaryColor)))),
-                      child: Text(
+                      child: processing == false ? Text(
                         "Login",
                         style: TextStyle(color: Colors.white),
-                      ),
+                      ) : CircularProgressIndicator(backgroundColor: kPrimaryLightColor, valueColor: AlwaysStoppedAnimation(kPrimaryColor),),
                       onPressed: () {
                         if(_formKey.currentState.validate()) {
                           _signinWithEmailAndPassword();
@@ -211,6 +216,9 @@ class _LoginState extends State<Login> {
   }
 
   void _signinWithEmailAndPassword() async{
+    setState(() {
+      processing = true;
+    });
     try{
       final User user = (await _auth.signInWithEmailAndPassword(
         email: _emailController.text, password: _passwordController.text)).user;

@@ -16,6 +16,7 @@ class SignUp extends StatefulWidget {
 
 class _SignUpState extends State<SignUp> {
   bool _isHidden = true;
+  bool processing = false;
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -100,12 +101,12 @@ class _SignUpState extends State<SignUp> {
                                 RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(18),
                                     side: BorderSide(color: kPrimaryColor)))),
-                    child: Text(
+                    child:processing ==false ? Text(
                       "Sign Up",
                       style: TextStyle(
                         color: Colors.white,
                       ),
-                    ),
+                    ) : CircularProgressIndicator(backgroundColor: kPrimaryLightColor, valueColor: AlwaysStoppedAnimation(kPrimaryColor),),
                     onPressed: () async {
                       if (_formKey.currentState.validate()) {
                         _registerAcc();
@@ -226,6 +227,9 @@ class _SignUpState extends State<SignUp> {
   }
 
   void _registerAcc() async {
+    setState(() {
+      processing = true;
+    });
     final User user = (await _auth.createUserWithEmailAndPassword(
       email: _emailController.text, password: _passwordController.text))
       .user;
